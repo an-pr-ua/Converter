@@ -1,0 +1,20 @@
+<app-navigation></app-navigation>
+<h1 class="font-bold mb-2 text-center text-lg">{{title | titlecase}}</h1>
+
+<input type="text" class="mb-2 border py-2 px-4 w-full"
+    placeholder="Вибір (почніть українською вводити назву продукту по якому встановлен курс НБУ)" [(ngModel)]="term">
+
+<p *ngIf="loading" class="text-center text-lg">Loading...</p>
+
+
+<div *ngIf="products$ | async as products">
+    <app-product *ngFor="let product of products | filterProducts: term; let i = index"
+        [product]="product"></app-product>
+</div>
+
+<app-modal *ngIf="modalService.isVisible$ | async" title="ОБЕРІТЬ ВАЛЮТИ ОБМІНУ">
+</app-modal>
+
+
+<button class=" bg-red-600 text-white fixed right-5 bottom-5 py-4 px-4" (click)="modalService.open()">
+    конвертація</button>

@@ -1,0 +1,30 @@
+<div class="bg-black/50 fixed top-0 right-0 left-0 bottom-0" (click)="modalServices.close()"></div>
+<div class="w-[640px] absolute top-16 rounded p-6 bg-white left-1/4 -traslate-x-1/2 ">
+    <h1 class="text-center mb-2 text-lg">{{ title }}</h1>
+    <div class="inline-flex">
+        <div>
+            <input id="input2" type="number" min="0" class="border w-full py-2 px-4 mb-2"
+                (change)="convertValue(undefined, 'input2' )" [(ngModel)]="input2"
+                placeholder="введіть будь ласка кількість" appFocus>
+            <div class="col">
+
+
+                <app-converter id="select2" (currencySelection)="convertValue($event, 'select2')"></app-converter>
+            </div>
+        </div>
+        <div>
+            <input id="input1" type="number" min="0" class="border w-full py-2 px-4 mb-2"
+                (change)="convertValue(undefined, 'input1')" [(ngModel)]="input1" placeholder="----">
+
+
+            <div class="col">
+
+                <app-converter id="select1" (currencySelection)="convertValue($event, 'select1')"></app-converter>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

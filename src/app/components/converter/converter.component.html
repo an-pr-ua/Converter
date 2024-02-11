@@ -1,0 +1,12 @@
+<select class="py-2 px-4  bg-gray-400 text-white hover:bg-gray-600" #newItem
+    (change)="selectionCurrency(newItem.value)">
+    <option>
+
+    <option *ngFor="let currencyName of currencyNames" [value]="currencyName.cc">
+        {{currencyName.cc}}-{{currencyName.txt}}
+
+
+
+    </option>
+
+</select>
