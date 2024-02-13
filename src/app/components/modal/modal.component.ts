@@ -13,13 +13,13 @@ export class ModalComponent {
   @Input() title: string;
   @Input() currencyNames: ICurrency[];
   @Input() selectedValue: string;
-  input1: any;
-  input2: any;
-  selectValute1: any;
-  selectValute2: any;
+  input1: number;
+  input2: number;
+  selectValute1: string;
+  selectValute2: string;
   selectId: string;
-  selectValute1Rate: any;
-  selectValute2Rate: any;
+  selectValute1Rate: number;
+  selectValute2Rate: number;
 
   constructor(
     public modalServices: ModalService,
@@ -33,13 +33,13 @@ export class ModalComponent {
     });
   }
 
-  convertValue(selectedValue: any, selectId: string) {
+  convertValue(selectedValue: string, selectId: string) {
     this.selectedValue = selectedValue;
 
-    var inputQuantity1: any = this.input1 as unknown as number;
-    var inputQuantity2: any = this.input2 as unknown as number;
+    var inputQuantity1: number = this.input1 as unknown as number;
+    var inputQuantity2: number = this.input2 as unknown as number;
 
-    if (selectedValue !== undefined) {
+    if (selectedValue !== '') {
       var selectValuteRate: number = this.currencyNames.find(
         (item) => item.cc === selectedValue
       )!.rate;
@@ -61,10 +61,10 @@ export class ModalComponent {
       const exchangeRate = this.selectValute1Rate! / this.selectValute2Rate!;
       if (selectId == 'select1' || selectId == 'input1') {
         const resultValue = exchangeRate * inputQuantity1;
-        this.input2 = resultValue.toFixed(2);
+        this.input2 = Number(resultValue.toFixed(2));
       } else {
         const resultValue = inputQuantity2 / exchangeRate;
-        this.input1 = resultValue.toFixed(2);
+        this.input1 = Number(resultValue.toFixed(2));
       }
     }
   }

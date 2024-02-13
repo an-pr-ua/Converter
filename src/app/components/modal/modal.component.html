@@ -4,8 +4,8 @@
     <div class="inline-flex">
         <div>
             <input id="input2" type="number" min="0" class="border w-full py-2 px-4 mb-2"
-                (change)="convertValue(undefined, 'input2' )" [(ngModel)]="input2"
-                placeholder="введіть будь ласка кількість" appFocus>
+                (change)="convertValue('', 'input2' )" [(ngModel)]="input2" placeholder="введіть будь ласка кількість"
+                appFocus>
             <div class="col">
 
 
@@ -14,7 +14,7 @@
         </div>
         <div>
             <input id="input1" type="number" min="0" class="border w-full py-2 px-4 mb-2"
-                (change)="convertValue(undefined, 'input1')" [(ngModel)]="input1" placeholder="----">
+                (change)="convertValue('', 'input1')" [(ngModel)]="input1" placeholder="----">
 
 
             <div class="col">

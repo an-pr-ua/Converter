@@ -20,17 +20,19 @@ export class NavigationComponent {
       this.products.forEach((product: ICurrency) => {
         this.text.push(product.cc + ': ' + product.rate);
       }, this);
-      let valuteSearch: any;
+      let valuteSearch: string;
       const arrValuteCours: string[] = [];
       let arrValute: string[] = ['USD', 'EUR'];
       arrValute.forEach((valuteNav: string) => {
-        valuteSearch = products
-          .find((product) => product.cc === valuteNav)!
-          .rate.toFixed(2);
-        arrValuteCours.push(valuteNav + '-' + valuteSearch + '<br />');
+        let search = products.find((product) => product.cc === valuteNav);
+        if (search) {
+          valuteSearch = search.rate.toFixed(2);
+          arrValuteCours.push(valuteNav + '-' + valuteSearch + '<br />');
+        }
       });
 
-      const valuteCours: any = document.querySelector('#valuteCours');
+      const valuteCours = document.querySelector('#valuteCours');
+
       if (valuteCours) {
         valuteCours.innerHTML = arrValuteCours.join('');
       }
